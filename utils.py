@@ -1,7 +1,7 @@
 """
 Contains a set of misc. utilities
 """
-import time
+import time, os, sys
 import re
 import random
 
@@ -65,4 +65,10 @@ def is_uuid(string):
     and dashes as per the human-readable canonical form
     """
     return not not re.match(r'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}', string)
+
+def selfpath():
+    """
+    Returns the abs path of the file, regardless of where it is called from.
+    """
+    return os.path.dirname(os.path.realpath(sys.argv[0]))
 
