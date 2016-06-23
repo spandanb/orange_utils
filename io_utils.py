@@ -4,6 +4,7 @@ Contains various methods for IO
 import yaml
 import pprint
 import json
+import os
 
 def read_yaml(filepath=""):
     """
@@ -43,12 +44,12 @@ def log(text, width=80):
     count = width - len(text) - 1
     print "{} {}\n".format(text, '*'*count)
    
-def yaml_to_envvars(filepath='./config.yaml'):
+def yaml_to_envvars(yamlfile):
     """
     Reads a YAML file and stores variables as env vars.
     NOTE: The YAML should consist of one flat dictionary.
     """
-    conf = read_yaml(CONFIG_FILE)
+    conf = read_yaml(yamlfile)
     for param, value in conf.items():
         os.environ[param] = str(value)
 
